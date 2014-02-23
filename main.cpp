@@ -221,6 +221,73 @@ void test_10() {
 	assertEqual(bs->getFinalScore(), 90, (char*)__FUNCTION__);
 }
 
+void test_11() {
+	// More testing in the last 3 frames
+	BowlingScore *bs = new BowlingScore();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addStrike();
+	bs->addStrike();
+	bs->addThrow(0);
+	bs->addThrow(10);
+	bs->calculateScore();
+
+	assertEqual(bs->getFinalScore(), 50, (char*)__FUNCTION__);
+}
+
+void test_12() {
+	// More testing in the last 3 frames
+	BowlingScore *bs = new BowlingScore();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addNone();
+	bs->addStrike();
+	bs->addStrike();
+	bs->addStrike();
+	bs->addThrow(0);
+	bs->addThrow(10);
+	bs->calculateScore();
+
+	assertEqual(bs->getFinalScore(), 70, (char*)__FUNCTION__);
+}
+
+void test_13() {
+	// A real game
+	BowlingScore *bs = new BowlingScore();
+	bs->addThrow(9);
+	bs->addThrow(0);
+	bs->addThrow(7);
+	bs->addThrow(3);
+	bs->addThrow(7);
+	bs->addThrow(2);
+	bs->addThrow(9);
+	bs->addThrow(1);
+	bs->addThrow(7);
+	bs->addThrow(3);
+	bs->addThrow(9);
+	bs->addThrow(1);
+	bs->addThrow(8);
+	bs->addThrow(2);
+	bs->addThrow(9);
+	bs->addThrow(1);
+	bs->addStrike();
+	bs->addStrike();
+	bs->addThrow(8);
+	bs->addThrow(1);
+	bs->calculateScore();
+
+	assertEqual(bs->getFinalScore(), 223, (char*)__FUNCTION__);
+}
+
 void test_perfect_game() {
 	BowlingScore *bs = new BowlingScore();
 	bs->addStrike();
